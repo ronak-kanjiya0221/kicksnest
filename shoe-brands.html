@@ -1,0 +1,539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SOLE — All Shoe Brands</title>
+<link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --black: #0a0a0a;
+    --white: #f5f2ec;
+    --cream: #ede9e1;
+    --accent: #c8f23a;
+    --muted: #6b6b6b;
+    --card-bg: #141414;
+    --border: rgba(255,255,255,0.07);
+  }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    background: var(--black);
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-weight: 300;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+ /* NAV */
+ /* ── Navbar ── */
+    .navbar {
+      background-color: #fff !important;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .navbar-brand {
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: #000 !important;
+      letter-spacing: 2px;
+    }
+
+    .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e00 !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    /* ── Section headings ── */
+    .section-title {
+      text-align: center;
+      color: #000;
+      font-weight: 900;
+      font-size: 2rem;
+      letter-spacing: 3px;
+      margin-bottom: 4px;
+    }
+
+    .section-subtitle a {
+      color: #000;
+      text-decoration: underline;
+      text-decoration-color: red;
+      text-decoration-thickness: 6px;
+      font-weight: 700;
+      font-size: 1rem;
+      letter-spacing: 2px;
+    }
+
+  /* HERO */
+  .hero {
+    min-height: 100vh;
+    display: flex; flex-direction: column; justify-content: flex-end;
+    padding: 0 3rem 5rem;
+    position: relative;
+    overflow: hidden;
+  }
+  .hero-bg {
+    position: absolute; inset: 0;
+    background: 
+      radial-gradient(ellipse 80% 60% at 70% 40%, rgba(200,242,58,0.06) 0%, transparent 65%),
+      radial-gradient(ellipse 60% 80% at 20% 80%, rgba(200,242,58,0.04) 0%, transparent 60%);
+  }
+  .hero-grid {
+    position: absolute; inset: 0; opacity: 0.03;
+    background-image: 
+      linear-gradient(rgba(245,242,236,0.8) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(245,242,236,0.8) 1px, transparent 1px);
+    background-size: 60px 60px;
+  }
+  .hero-eyebrow {
+    font-size: 0.75rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 1.2rem; opacity: 0;
+    animation: fadeUp 0.6s ease 0.2s forwards;
+  }
+  .hero-title {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: clamp(5rem, 14vw, 13rem);
+    line-height: 0.9;
+    letter-spacing: 0.02em;
+    opacity: 0;
+    animation: fadeUp 0.7s ease 0.35s forwards;
+  }
+  .hero-title span { color: var(--accent); }
+  .hero-sub {
+    margin-top: 2rem;
+    font-size: 1rem; color: rgba(245,242,236,0.45); max-width: 480px;
+    font-weight: 300; line-height: 1.7;
+    opacity: 0; animation: fadeUp 0.6s ease 0.5s forwards;
+  }
+  .hero-stats {
+    display: flex; gap: 4rem; margin-top: 3.5rem;
+    opacity: 0; animation: fadeUp 0.6s ease 0.65s forwards;
+  }
+  .stat-num { font-family: 'Bebas Neue', sans-serif; font-size: 2.8rem; color: var(--white); letter-spacing: 0.05em; }
+  .stat-label { font-size: 0.75rem; color: var(--muted); text-transform: uppercase; letter-spacing: 0.1em; margin-top: 2px; }
+  .scroll-hint {
+    position: absolute; bottom: 2.5rem; right: 3rem;
+    font-size: 0.7rem; letter-spacing: 0.15em; text-transform: uppercase;
+    color: var(--muted); writing-mode: vertical-rl;
+    display: flex; align-items: center; gap: 0.8rem;
+  }
+  .scroll-hint::before {
+    content: ''; display: block;
+    width: 1px; height: 50px; background: var(--muted);
+    animation: growLine 1s ease 1s both;
+  }
+
+  /* FILTER BAR */
+  .filter-section { padding: 3rem 3rem 1.5rem; }
+  .filter-title { font-size: 0.7rem; letter-spacing: 0.18em; text-transform: uppercase; color: var(--muted); margin-bottom: 1.2rem; }
+  .filter-btns { display: flex; flex-wrap: wrap; gap: 0.6rem; }
+  .filter-btn {
+    padding: 0.5rem 1.4rem;
+    border: 1px solid var(--border);
+    background: transparent;
+    color: rgba(245,242,236,0.5);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.8rem; letter-spacing: 0.06em;
+    cursor: pointer; border-radius: 999px;
+    transition: all 0.2s;
+  }
+  .filter-btn:hover, .filter-btn.active {
+    background: var(--accent); color: var(--black);
+    border-color: var(--accent); font-weight: 500;
+  }
+
+  /* SEARCH */
+  .search-wrap { padding: 0 3rem 2rem; }
+  .search-input {
+    width: 100%; max-width: 480px;
+    padding: 0.9rem 1.4rem;
+    background: rgba(255,255,255,0.04);
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    color: var(--white);
+    font-family: 'DM Sans', sans-serif;
+    font-size: 0.95rem;
+    outline: none;
+    transition: border-color 0.2s;
+  }
+  .search-input::placeholder { color: var(--muted); }
+  .search-input:focus { border-color: rgba(200,242,58,0.4); }
+
+  /* BRANDS GRID */
+  .brands-section { padding: 0 3rem 6rem; }
+  .section-header { 
+    display: flex; justify-content: space-between; align-items: baseline;
+    margin-bottom: 2rem; padding-bottom: 1rem;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-title { font-family: 'Bebas Neue', sans-serif; font-size: 2.4rem; letter-spacing: 0.06em; }
+  .brand-count { font-size: 0.8rem; color: var(--muted); letter-spacing: 0.1em; }
+
+  .brands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.5px;
+  }
+
+  .brand-card {
+    background: var(--card-bg);
+    padding: 2rem 1.8rem;
+    cursor: pointer;
+    transition: background 0.2s, transform 0.2s;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid transparent;
+    animation: fadeIn 0.4s ease both;
+  }
+  .brand-card:hover {
+    background: #1c1c1c;
+    border-color: var(--border);
+    z-index: 1;
+    transform: scale(1.01);
+  }
+  .brand-card::after {
+    content: '';
+    position: absolute; bottom: 0; left: 0; right: 0; height: 2px;
+    background: var(--accent);
+    transform: scaleX(0); transform-origin: left;
+    transition: transform 0.3s ease;
+  }
+  .brand-card:hover::after { transform: scaleX(1); }
+
+  .brand-emoji { font-size: 2.4rem; margin-bottom: 1rem; display: block; }
+  .brand-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 1.6rem; letter-spacing: 0.06em;
+    color: var(--white); margin-bottom: 0.3rem;
+  }
+  .brand-origin {
+    font-size: 0.72rem; letter-spacing: 0.12em; text-transform: uppercase;
+    color: var(--muted); margin-bottom: 0.8rem;
+  }
+  .brand-desc { font-size: 0.85rem; color: rgba(245,242,236,0.45); line-height: 1.6; }
+  .brand-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-top: 1rem; }
+  .tag {
+    font-size: 0.65rem; letter-spacing: 0.1em; text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border: 1px solid rgba(200,242,58,0.2);
+    color: rgba(200,242,58,0.65);
+    border-radius: 999px;
+  }
+
+  /* FEATURED */
+  .featured-section { padding: 2rem 3rem 4rem; }
+  .featured-row {
+    display: grid; grid-template-columns: 1fr 1fr; gap: 1.5px;
+    margin-top: 2rem;
+  }
+  .featured-card {
+    padding: 3rem 2.5rem;
+    background: var(--card-bg);
+    position: relative; overflow: hidden;
+    cursor: pointer; transition: background 0.2s;
+    border: 1px solid transparent;
+  }
+  .featured-card:hover { background: #1c1c1c; border-color: var(--border); }
+  .featured-label {
+    font-size: 0.65rem; letter-spacing: 0.2em; text-transform: uppercase;
+    color: var(--accent); margin-bottom: 0.8rem;
+  }
+  .featured-name {
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 3.5rem; letter-spacing: 0.04em; line-height: 1;
+    margin-bottom: 0.8rem;
+  }
+  .featured-desc { font-size: 0.9rem; color: rgba(245,242,236,0.45); line-height: 1.65; max-width: 380px; }
+  .featured-arrow {
+    position: absolute; bottom: 2rem; right: 2rem;
+    font-size: 2rem; color: var(--accent); opacity: 0;
+    transition: opacity 0.2s, transform 0.2s;
+    transform: translate(-4px, 4px);
+  }
+  .featured-card:hover .featured-arrow { opacity: 1; transform: translate(0, 0); }
+  .featured-bg-text {
+    position: absolute; bottom: -1.5rem; right: -1rem;
+    font-family: 'Bebas Neue', sans-serif;
+    font-size: 10rem; opacity: 0.04; letter-spacing: 0.05em;
+    line-height: 1; pointer-events: none;
+    color: var(--white);
+  }
+
+  /* FOOTER */
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 2.5rem 3rem;
+    display: flex; justify-content: space-between; align-items: center;
+    flex-wrap: wrap; gap: 1rem;
+  }
+  .footer-logo { font-family: 'Bebas Neue', sans-serif; font-size: 1.5rem; letter-spacing: 0.12em; color: var(--accent); }
+  .footer-copy { font-size: 0.75rem; color: var(--muted); }
+
+  /* HIDDEN */
+  .hidden { display: none !important; }
+
+  /* ANIMATIONS */
+  @keyframes fadeUp {
+    from { opacity: 0; transform: translateY(28px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(12px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes growLine {
+    from { transform: scaleY(0); transform-origin: bottom; }
+    to { transform: scaleY(1); }
+  }
+
+  @media (max-width: 768px) {
+    nav { padding: 1rem 1.5rem; }
+    .nav-links { display: none; }
+    .hero { padding: 0 1.5rem 4rem; }
+    .hero-stats { gap: 2.5rem; }
+    .filter-section, .search-wrap, .brands-section, .featured-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+    .featured-row { grid-template-columns: 1fr; }
+    footer { padding: 2rem 1.5rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════ SECTION 1 — NAVBAR ══════════════ -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#">Superkicks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index3_o.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="footwear.html">Footwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Brands</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="footwear.html">Men</a></li>
+              <li><a class="dropdown-item" href="Women.html">Women</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-bg"></div>
+  <div class="hero-grid"></div>
+  <p class="hero-eyebrow">The Ultimate Shoe Directory</p>
+  <h1 class="hero-title">EVERY<br><span>SOLE</span><br>BRAND</h1>
+  <p class="hero-sub">From performance giants to heritage craftsmen — explore the world's most iconic footwear brands all in one place.</p>
+  <div class="hero-stats">
+    <div>
+      <div class="stat-num" id="stat-count">40+</div>
+      <div class="stat-label">Brands</div>
+    </div>
+    <div>
+      <div class="stat-num">8</div>
+      <div class="stat-label">Categories</div>
+    </div>
+    <div>
+      <div class="stat-num">30+</div>
+      <div class="stat-label">Countries</div>
+    </div>
+  </div>
+  <div class="scroll-hint">Scroll</div>
+</section>
+
+<!-- FEATURED -->
+<section class="featured-section" id="featured">
+  <div class="section-header">
+    <div class="section-title">Iconic Brands</div>
+  </div>
+  <div class="featured-row">
+    <div class="featured-card">
+      <div class="featured-label">Performance · USA · Est. 1964</div>
+      <div class="featured-name">Nike</div>
+      <p class="featured-desc">The swoosh that changed sport. From Air Max to Jordan, Nike defines performance footwear and street culture worldwide.</p>
+      <div class="featured-arrow">↗</div>
+      <div class="featured-bg-text">NIKE</div>
+    </div>
+    <div class="featured-card">
+      <div class="featured-label">Performance · Germany · Est. 1949</div>
+      <div class="featured-name">Adidas</div>
+      <p class="featured-desc">Three stripes, infinite legacy. Adidas bridges high-performance athletics and fashion-forward streetwear with timeless design.</p>
+      <div class="featured-arrow">↗</div>
+      <div class="featured-bg-text">ADS</div>
+    </div>
+  </div>
+</section>
+
+<!-- FILTER + SEARCH -->
+<div class="filter-section" id="brands">
+  <div class="filter-title">Filter by category</div>
+  <div class="filter-btns">
+    <button class="filter-btn active" data-filter="all">All Brands</button>
+    <button class="filter-btn" data-filter="performance">Performance</button>
+    <button class="filter-btn" data-filter="lifestyle">Lifestyle</button>
+    <button class="filter-btn" data-filter="luxury">Luxury</button>
+    <button class="filter-btn" data-filter="skate">Skate & Street</button>
+    <button class="filter-btn" data-filter="outdoor">Outdoor</button>
+    <button class="filter-btn" data-filter="heritage">Heritage</button>
+    <button class="filter-btn" data-filter="work">Work & Safety</button>
+  </div>
+</div>
+
+<div class="search-wrap">
+  <input class="search-input" type="text" placeholder="Search brands…" id="searchInput" />
+</div>
+
+<!-- BRANDS GRID -->
+<section class="brands-section">
+  <div class="section-header">
+    <div class="section-title">All Brands</div>
+    <div class="brand-count" id="brandCountLabel">40 brands</div>
+  </div>
+  <div class="brands-grid" id="brandsGrid"></div>
+</section>
+
+<footer>
+  <div class="footer-logo">SOLE</div>
+  <div class="footer-copy">© 2026 SOLE — Every Brand, Every Step</div>
+</footer>
+<!-- -------------------------------- -->
+<script>
+const brands = [
+  { name:"Nike", origin:"USA · 1964", emoji:"✔", desc:"The world's largest athletic footwear brand. Iconic for Air Max, Jordan, and relentless innovation.", tags:["performance","lifestyle","running","basketball"] },
+  { name:"Adidas", origin:"Germany · 1949", emoji:"🌟", desc:"Three stripes, a global icon. From Ultraboost to Stan Smiths, Adidas defines sport and style.", tags:["performance","lifestyle","running"] },
+  { name:"Puma", origin:"Germany · 1948", emoji:"🐆", desc:"Speed, agility, and style. Puma blends performance sport with fashion-forward streetwear.", tags:["performance","lifestyle"] },
+  { name:"New Balance", origin:"USA · 1906", emoji:"🔵", desc:"Made in USA craftsmanship with serious running heritage. Cult following for comfort and quality.", tags:["performance","lifestyle","running"] },
+  { name:"Converse", origin:"USA · 1908", emoji:"⭐", desc:"The All Star has been worn by rebels, rockers, and everyone in between since 1908.", tags:["lifestyle","heritage"] },
+  { name:"Vans", origin:"USA · 1966", emoji:"🛹", desc:"Born on the West Coast. The go-to shoe of skaters, musicians, and free spirits everywhere.", tags:["skate","lifestyle"] },
+  { name:"Reebok", origin:"UK · 1958", emoji:"🟥", desc:"Fitness and lifestyle in one. Classic Club C and Freestyle remain icons of casual cool.", tags:["performance","lifestyle"] },
+  { name:"ASICS", origin:"Japan · 1949", emoji:"🏃", desc:"Anima Sana In Corpore Sano. Science-driven running shoes beloved by serious runners worldwide.", tags:["performance","running"] },
+  { name:"Saucony", origin:"USA · 1898", emoji:"🔴", desc:"Over a century of running expertise, trusted by marathon runners for comfort and precision.", tags:["performance","running"] },
+  { name:"Brooks", origin:"USA · 1914", emoji:"🟢", desc:"Dedicated to running, nothing else. Premium cushioning and biomechanical engineering.", tags:["performance","running"] },
+  { name:"Hoka", origin:"France · 2009", emoji:"🌈", desc:"Maximum cushion, minimum weight. Transformed the running world with maximal stack height.", tags:["performance","running","outdoor"] },
+  { name:"On Running", origin:"Switzerland · 2010", emoji:"☁", desc:"CloudTec technology from Zurich. Redefining how running feels with patented cushioning pods.", tags:["performance","running"] },
+  { name:"Salomon", origin:"France · 1947", emoji:"⛰", desc:"Trail running and outdoor performance. Built for the mountains, worn in the city.", tags:["outdoor","performance"] },
+  { name:"Merrell", origin:"USA · 1981", emoji:"🌲", desc:"Boots and trail shoes engineered for outdoor adventure and all-day comfort.", tags:["outdoor"] },
+  { name:"Columbia", origin:"USA · 1938", emoji:"🏔", desc:"Pacific Northwest durability meets global outdoor adventure. Omni-Grip technology for any terrain.", tags:["outdoor"] },
+  { name:"Timberland", origin:"USA · 1952", emoji:"🌳", desc:"The yellow boot is legendary. Rugged outdoor and lifestyle footwear with an iconic heritage.", tags:["outdoor","heritage","lifestyle"] },
+  { name:"Dr. Martens", origin:"UK · 1960", emoji:"🥾", desc:"Subculture royalty. The 1460 boot built for workers became the symbol of punk and rebellion.", tags:["heritage","lifestyle"] },
+  { name:"Birkenstock", origin:"Germany · 1774", emoji:"🌾", desc:"250 years of contoured cork footbeds. From hippie staple to high-fashion collaboration icon.", tags:["heritage","lifestyle"] },
+  { name:"Clarks", origin:"UK · 1825", emoji:"🇬🇧", desc:"Two centuries of British craftsmanship. The Desert Boot is one of the most copied shoes ever made.", tags:["heritage","lifestyle"] },
+  { name:"Church's", origin:"UK · 1873", emoji:"👞", desc:"Northampton-made excellence. Six-week Goodyear-welted construction. The pinnacle of British heritage.", tags:["luxury","heritage"] },
+  { name:"Gucci", origin:"Italy · 1921", emoji:"🟤", desc:"From Florentine leather goods to the Ace sneaker — Gucci shoes are icons of Italian luxury.", tags:["luxury"] },
+  { name:"Louis Vuitton", origin:"France · 1854", emoji:"🟡", desc:"The monogram that defined luxury. LV's footwear merges Parisian craft with bold modernity.", tags:["luxury"] },
+  { name:"Prada", origin:"Italy · 1913", emoji:"⚫", desc:"Where minimalism meets opulence. Prada's shoes define intellectual luxury with flawless construction.", tags:["luxury"] },
+  { name:"Balenciaga", origin:"Spain · 1919", emoji:"🔲", desc:"The Triple S rewrote sneaker rules. Balenciaga pushes footwear into avant-garde art territory.", tags:["luxury","lifestyle"] },
+  { name:"Christian Louboutin", origin:"France · 1991", emoji:"🔴", desc:"The red sole is as famous as the shoe. Louboutin elevated stilettos to cultural symbols.", tags:["luxury"] },
+  { name:"Manolo Blahnik", origin:"Spain · 1971", emoji:"👠", desc:"The shoe designer who became a pop culture legend. Beloved for heels of extraordinary beauty.", tags:["luxury"] },
+  { name:"Jimmy Choo", origin:"UK · 1996", emoji:"✨", desc:"Glamour, femininity, and precision craftsmanship. Jimmy Choo is synonymous with red-carpet luxury.", tags:["luxury"] },
+  { name:"Saint Laurent", origin:"France · 1961", emoji:"🖤", desc:"Rock 'n' roll luxury. Chelsea boots and sleek pumps with Parisian edge and attitude.", tags:["luxury"] },
+  { name:"Valentino", origin:"Italy · 1960", emoji:"🌹", desc:"The Rockstud redefined accessible luxury footwear. Bold, feminine, unmistakably Valentino.", tags:["luxury"] },
+  { name:"Bottega Veneta", origin:"Italy · 1966", emoji:"🤎", desc:"Intrecciato woven leather and quiet confidence. Luxury without logomania.", tags:["luxury"] },
+  { name:"Jordan Brand", origin:"USA · 1984", emoji:"🏀", desc:"Born from Michael Jordan's first Nike deal. Air Jordan 1 started the sneaker culture we know today.", tags:["lifestyle","performance","basketball"] },
+  { name:"Yeezy", origin:"USA · 2015", emoji:"🟫", desc:"Kanye West's vision brought Boost technology and earthy palettes to sneaker culture.", tags:["lifestyle"] },
+  { name:"New Balance 574", origin:"USA", emoji:"🔵", desc:"The 574 silhouette is a masterclass in lifestyle footwear — versatile, refined, enduring.", tags:["lifestyle"] },
+  { name:"Skechers", origin:"USA · 1992", emoji:"🩶", desc:"Comfort technology for every lifestyle. From memory foam casuals to performance training.", tags:["performance","lifestyle"] },
+  { name:"Wolverine", origin:"USA · 1883", emoji:"🔨", desc:"Work boots built for the trades. Over 140 years of durability and foot protection.", tags:["work"] },
+  { name:"Red Wing", origin:"USA · 1905", emoji:"🦅", desc:"Heritage work boots made in Minnesota since 1905. Iron Ranger is a modern classic.", tags:["work","heritage"] },
+  { name:"Caterpillar", origin:"USA · 1990", emoji:"🐱", desc:"CAT boots bring heavy equipment durability to everyday footwear. Built for real work.", tags:["work","outdoor"] },
+  { name:"Thorogood", origin:"USA · 1892", emoji:"🔵", desc:"American-made work boots trusted by firefighters, lineworkers, and tradespeople.", tags:["work"] },
+  { name:"Cole Haan", origin:"USA · 1928", emoji:"🟤", desc:"Grand.ØS technology brings Nike Air cushioning to dress shoes. Innovation meets elegance.", tags:["lifestyle","heritage"] },
+  { name:"Allen Edmonds", origin:"USA · 1922", emoji:"👔", desc:"360-degree Goodyear welt construction. The American answer to British classic shoemaking.", tags:["heritage","lifestyle"] },
+];
+
+const grid = document.getElementById('brandsGrid');
+const searchInput = document.getElementById('searchInput');
+const filterBtns = document.querySelectorAll('.filter-btn');
+const brandCountLabel = document.getElementById('brandCountLabel');
+let currentFilter = 'all';
+let currentSearch = '';
+
+function render() {
+  let filtered = brands.filter(b => {
+    const matchFilter = currentFilter === 'all' || b.tags.includes(currentFilter);
+    const matchSearch = b.name.toLowerCase().includes(currentSearch) || b.desc.toLowerCase().includes(currentSearch) || b.origin.toLowerCase().includes(currentSearch);
+    return matchFilter && matchSearch;
+  });
+  grid.innerHTML = '';
+  brandCountLabel.textContent = filtered.length + ' brand' + (filtered.length !== 1 ? 's' : '');
+  filtered.forEach((b, i) => {
+    const card = document.createElement('div');
+    card.className = 'brand-card';
+    card.style.animationDelay = (i * 0.03) + 's';
+    card.innerHTML = `
+      <span class="brand-emoji">${b.emoji}</span>
+      <div class="brand-name">${b.name}</div>
+      <div class="brand-origin">${b.origin}</div>
+      <p class="brand-desc">${b.desc}</p>
+      <div class="brand-tags">${b.tags.map(t => `<span class="tag">${t}</span>`).join('')}</div>
+    `;
+    grid.appendChild(card);
+  });
+  if (filtered.length === 0) {
+    grid.innerHTML = '<div style="padding:3rem;color:var(--muted);font-size:0.9rem;grid-column:1/-1;">No brands found. Try a different search or filter.</div>';
+  }
+}
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    currentFilter = btn.dataset.filter;
+    render();
+  });
+});
+
+searchInput.addEventListener('input', e => {
+  currentSearch = e.target.value.toLowerCase().trim();
+  render();
+});
+
+render();
+document.getElementById('stat-count').textContent = brands.length + '+';
+
+</script>
+
+   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+
+</body>
+</html>

@@ -1,0 +1,1678 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<title>women</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-sRIl4kxILFvY47J16cr9ZwB07vP4J8+LH7qKQnuqkuIAvNWLzeN8tE5YBujZqJLB" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css" crossorigin="anonymous" referrerpolicy="no-referrer"/>
+</head>
+<style>
+    * {
+      text-transform: uppercase;
+      box-sizing: border-box;
+      margin: 0px;
+      padding: 0px;
+    }
+
+    body {
+      padding-top: 60px;
+      overflow-x: hidden;
+    }
+
+    /* ── Navbar ── */
+    .navbar {
+      background-color: #fff !important;
+      border-bottom: 2px solid #e0e0e0;
+    }
+
+    .navbar-brand {
+      font-weight: 900;
+      font-size: 1.4rem;
+      color: #000 !important;
+      letter-spacing: 2px;
+    }
+
+    .nav-link {
+      color: #000 !important;
+      font-weight: 600;
+      font-size: 0.82rem;
+      letter-spacing: 1px;
+    }
+
+    .nav-link:hover,
+    .nav-link.active {
+      color: #e00 !important;
+    }
+
+    .navbar-toggler {
+      border: none;
+    }
+
+    /* ── Product Cards ── */
+    .card {
+      border: none;
+      border-radius: 0;
+      width: 100% !important;
+      transition: box-shadow 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      box-shadow: 0 8px 28px rgba(0,0,0,0.14);
+    }
+
+    .card img {
+      border-radius: 0;
+      background: #f5f5f5;
+    }
+
+    .card-body {
+      padding: 12px 8px;
+      background: #fff;
+      position: relative;
+    }
+
+    .card-brand {
+      font-size: 0.7rem;
+      color: #888;
+      letter-spacing: 1.5px;
+      margin-bottom: 2px;
+    }
+
+    .card-name {
+      font-size: 0.85rem;
+      font-weight: 700;
+      color: #000;
+      margin-bottom: 2px;
+    }
+
+    .card-color {
+      font-size: 0.72rem;
+      color: #666;
+      margin-bottom: 8px;
+    }
+
+    .card-price {
+      font-size: 0.95rem;
+      font-weight: 900;
+      color: #000;
+    }
+
+    .card-cart-btn {
+      position: absolute;
+      top: 14px;
+      right: 10px;
+      background: #000;
+      color: #fff;
+      border: none;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+
+    .card-cart-btn:hover {
+      background: #e00;
+    }
+
+     /*______________ FOOTER ________________________*/
+    .footer {
+      background-color: #000;
+      color: white;
+      padding: 60px 0;
+      width: 100%;
+      overflow: hidden;
+    }
+
+    .footer * {
+      background-color: transparent;
+    }
+
+    .footer a {
+      color: white;
+      text-decoration: none;
+      display: block;
+      margin-bottom: 10px;
+      font-family: sans-serif;
+    }
+
+    .footer a:hover {
+      color: red;
+      text-decoration: underline;
+    }
+
+    .footer-title {
+      font-weight: bold;
+      margin-bottom: 20px;
+      font-family: Agency FB, sans-serif;
+      font-size: 25px;
+    }
+
+    .float-label-wrap {
+      position: relative;
+      width: 200px;
+      margin-top: 10px;
+    }
+
+    .email-box {
+      width: 200px;
+      padding: 22px 10px 6px 10px;
+      border: none;
+      background: #fff;
+      color: #000;
+      font-size: 16px;
+      outline: none;
+      box-sizing: border-box;
+    }
+
+    .float-label {
+      position: absolute;
+      left: 10px;
+      top: 13px;
+      font-size: 16px;
+      color: #888;
+      pointer-events: none;
+      transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .email-box:focus ~ .float-label,
+    .email-box:not(:placeholder-shown) ~ .float-label {
+      top: 4px;
+      font-size: 11px;
+      color: #555;
+    }
+
+    .subscribe-btn {
+      background: red;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      margin-top: 10px;
+      font-family: sans-serif;
+      font-weight: bold;
+    }
+
+    .social {
+      display: flex;
+      gap: 12px;
+    }
+
+    .fa-square-instagram {
+      font-size: 2.5rem;
+    }
+
+    .fa-square-facebook {
+      font-size: 2.5rem;
+    }
+
+    /* ══════════════ E-COMMERCE: SHARED ══════════════ */
+    .toast-cart {
+      position: fixed;
+      top: 76px;
+      right: 20px;
+      background: #000;
+      color: #fff;
+      padding: 12px 20px;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 1px;
+      z-index: 2100;
+      opacity: 0;
+      transform: translateY(-10px);
+      transition: opacity 0.3s ease, transform 0.3s ease;
+      pointer-events: none;
+      border-left: 4px solid #e00;
+    }
+    .toast-cart.show { opacity: 1; transform: translateY(0); }
+
+    .nav-icons-wrap { display: flex; align-items: center; margin-left: 18px; gap: 4px; }
+    .nav-icon-btn {
+      background: none;
+      border: none;
+      color: #000;
+      font-size: 1.1rem;
+      position: relative;
+      margin-left: 14px;
+      cursor: pointer;
+      transition: color 0.2s;
+      padding: 4px;
+    }
+    .nav-icon-btn:hover { color: #e00; }
+    .nav-icon-badge {
+      position: absolute;
+      top: -6px;
+      right: -8px;
+      background: #e00;
+      color: #fff;
+      font-size: 0.6rem;
+      font-weight: 900;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      letter-spacing: 0;
+      text-transform: none;
+    }
+
+    /* Overlay screens */
+    .shop-overlay {
+      position: fixed;
+      inset: 0;
+      background: #fff;
+      z-index: 1500;
+      overflow-y: auto;
+      display: none;
+      opacity: 0;
+      transition: opacity 0.25s ease;
+    }
+    .shop-overlay.active { display: block; }
+    .shop-overlay.show { opacity: 1; }
+    .shop-topbar {
+      background: #fff;
+      border-bottom: 2px solid #e0e0e0;
+      padding: 16px 24px;
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+    .shop-back-btn {
+      background: none;
+      border: none;
+      font-size: 1.1rem;
+      color: #000;
+      cursor: pointer;
+      transition: color 0.2s;
+    }
+    .shop-back-btn:hover { color: #e00; }
+    .shop-topbar h2 {
+      font-weight: 900;
+      font-size: 1.1rem;
+      letter-spacing: 2px;
+      color: #000;
+      margin: 0;
+    }
+    .shop-body { max-width: 1100px; margin: 0 auto; padding: 30px 20px 80px; }
+
+    /* Buttons */
+    .btn-shop-primary {
+      background: #000;
+      color: #fff;
+      border: none;
+      padding: 12px 28px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      transition: background 0.2s;
+      cursor: pointer;
+    }
+    .btn-shop-primary:hover { background: #e00; color: #fff; }
+    .btn-shop-primary:disabled { background: #ccc; cursor: not-allowed; }
+    .btn-shop-outline {
+      background: #fff;
+      color: #000;
+      border: 2px solid #000;
+      padding: 10px 26px;
+      font-weight: 700;
+      font-size: 0.82rem;
+      letter-spacing: 1.5px;
+      transition: all 0.2s;
+      cursor: pointer;
+    }
+    .btn-shop-outline:hover { background: #000; color: #fff; }
+    .btn-block-shop { width: 100%; text-align: center; }
+
+    /* Cart list */
+    .cart-row {
+      display: flex;
+      align-items: center;
+      gap: 18px;
+      padding: 18px 0;
+      border-bottom: 1px solid #eee;
+      flex-wrap: wrap;
+    }
+    .cart-row img { 
+      width: 84px;
+      height: 84px; 
+      object-fit: cover;
+      background: #f5f5f5;
+    }
+    .cart-row-info { flex: 1; min-width: 160px; }
+    .cart-row-brand { font-size: 0.68rem; color: #888; letter-spacing: 1px; }
+    .cart-row-name { font-size: 0.85rem; font-weight: 700; color: #000; }
+    .cart-row-price { font-size: 0.8rem; color: #555; }
+    .qty-control { display: flex; align-items: center; border: 1px solid #ddd; }
+    .qty-control button {
+      background: #fff; border: none; width: 30px; height: 30px;
+      font-weight: 900; cursor: pointer; transition: background 0.2s;
+    }
+    .qty-control button:hover { background: #000; color: #fff; }
+    .qty-control span { width: 30px; text-align: center; font-weight: 700; font-size: 0.8rem; }
+    .cart-row-subtotal { width: 90px; text-align: right; font-weight: 900; font-size: 0.85rem; margin-left: auto; }
+    .cart-remove-btn {
+      background: none; border: none; color: #999; font-size: 1rem; cursor: pointer; transition: color 0.2s;
+    }
+    .cart-remove-btn:hover { color: #e00; }
+
+    .cart-summary-box { border: 2px solid #000; padding: 24px; }
+    .cart-summary-row { display: flex; justify-content: space-between; font-size: 0.82rem; margin-bottom: 10px; letter-spacing: 0.5px; }
+    .cart-summary-total { border-top: 2px solid #000; margin-top: 14px; padding-top: 14px; font-size: 1.1rem; font-weight: 900; }
+    .empty-state { text-align: center; padding: 80px 20px; color: #888; }
+    .empty-state i { font-size: 2.6rem; margin-bottom: 16px; color: #ccc; display: block; }
+
+    /* Forms */
+    .shop-form-group { margin-bottom: 18px; }
+    .shop-form-group label {
+      display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 1px; color: #555; margin-bottom: 6px;
+    }
+    .shop-form-group input, .shop-form-group textarea, .shop-form-group select {
+      width: 100%; border: 1px solid #ccc; padding: 11px 12px; font-size: 0.85rem; letter-spacing: 0.5px;
+      text-transform: none; outline: none; transition: border-color 0.2s; font-family: inherit;
+    }
+    .shop-form-group input:focus, .shop-form-group textarea:focus, .shop-form-group select:focus { border-color: #000; }
+    .shop-form-error { color: #e00; font-size: 0.68rem; margin-top: 5px; letter-spacing: 0.5px; display: none; text-transform: none; }
+    .shop-form-group.has-error input { border-color: #e00; }
+    .shop-form-group.has-error .shop-form-error { display: block; }
+
+    /* Auth modal tabs */
+    .auth-tabs { display: flex; border-bottom: 2px solid #eee; margin-bottom: 22px; }
+    .auth-tab {
+      flex: 1; background: none; border: none; padding: 10px; font-weight: 900; font-size: 0.8rem;
+      letter-spacing: 1.5px; color: #999; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s;
+    }
+    .auth-tab.active { color: #000; border-bottom-color: #e00; }
+    .auth-panel { display: none; }
+    .auth-panel.active { display: block; }
+    .auth-switch-note { font-size: 0.72rem; color: #888; text-align: center; margin-top: 14px; letter-spacing: 0.5px; }
+    .auth-switch-note a { color: #000; font-weight: 700; text-decoration: underline; text-decoration-color: #e00; cursor: pointer; }
+    .auth-error-banner {
+      background: #fdecea; color: #c0392b; font-size: 0.72rem; letter-spacing: 0.5px; padding: 10px 14px;
+      margin-bottom: 16px; display: none; text-transform: none; border-left: 3px solid #e00;
+    }
+
+    /* Payment methods */
+    .pay-method {
+      border: 2px solid #eee; padding: 16px 18px; display: flex; align-items: center; gap: 14px;
+      cursor: pointer; margin-bottom: 12px; transition: border-color 0.2s;
+    }
+    .pay-method:hover { border-color: #ccc; }
+    .pay-method.selected { border-color: #000; }
+    .pay-method i { font-size: 1.3rem; width: 26px; text-align: center; }
+    .pay-method span { font-weight: 700; font-size: 0.8rem; letter-spacing: 1px; }
+    .pay-method input { margin-left: auto; }
+
+    /* Order confirmation */
+    .order-confirm-icon {
+      width: 70px; height: 70px; border-radius: 50%; background: #000; color: #fff;
+      display: flex; align-items: center; justify-content: center; font-size: 1.8rem; margin: 0 auto 20px;
+    }
+    .order-status-badge {
+      display: inline-block; background: #000; color: #fff; font-size: 0.65rem; font-weight: 900;
+      letter-spacing: 1px; padding: 4px 12px;
+    }
+
+    /* Account */
+    .account-tabs { display: flex; gap: 30px; border-bottom: 2px solid #e0e0e0; margin-bottom: 26px; flex-wrap: wrap; }
+    .account-tab {
+      background: none; border: none; padding: 8px 0; font-weight: 900; font-size: 0.78rem; letter-spacing: 1.5px;
+      color: #999; cursor: pointer; border-bottom: 3px solid transparent; transition: all 0.2s;
+    }
+    .account-tab.active { color: #000; border-bottom-color: #e00; }
+    .account-panel { display: none; }
+    .account-panel.active { display: block; }
+    .order-card { border: 1px solid #eee; padding: 18px; margin-bottom: 14px; cursor: pointer; transition: border-color 0.2s; }
+    .order-card:hover { border-color: #000; }
+    .order-card-head { display: flex; justify-content: space-between; align-items: center; margin-bottom: 6px; flex-wrap: wrap; gap: 6px; }
+    .order-card-id { font-weight: 900; font-size: 0.82rem; }
+    .order-card-meta { font-size: 0.68rem; color: #888; }
+    .loading-spin { text-align: center; padding: 60px 20px; color: #888; font-size: 0.8rem; letter-spacing: 1px; }
+    .loading-spin i { font-size: 1.6rem; margin-bottom: 10px; display: block; }
+
+    @media (max-width: 576px) {
+      .cart-row-subtotal { width: auto; }
+      .shop-body { padding: 20px 14px 60px; }
+      .shop-topbar { padding: 14px 16px; }
+    }
+
+
+</style>
+
+<body>
+	 <!-- ══════════════ SECTION 1 — NAVBAR ══════════════ -->
+  <nav class="navbar navbar-expand-lg fixed-top">
+    <div class="container-fluid px-4">
+      <a class="navbar-brand" href="#">Superkicks</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index3_o.html">Home</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="about.html">About</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="footwear.html">Footwear</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="shoe-brands.html">Brands</a>
+          </li>
+          <li class="nav-item dropdown">
+            <a class="nav-link dropdown-toggle" href="#" role="button"
+              data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+            <ul class="dropdown-menu">
+              <li><a class="dropdown-item" href="footwear.html">Men</a></li>
+              <li><a class="dropdown-item" href="#">Women</a></li>
+              <li><hr class="dropdown-divider"></li>
+              <li><a class="dropdown-item" href="kids.html">Kids</a></li>
+            </ul>
+          </li>
+        </ul>
+        <form class="d-flex" role="search">
+          <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn btn-dark" type="submit">Search</button>
+        </form>
+      </div>
+    </div>
+  </nav>
+
+  <!-- ------------------------------------------------- ----------------------------------- -->
+  	 <!-- ══════════════ SECTION 2 — PRODUCT CARDS ══════════════ -->
+  <div class="container mt-4 mb-5">
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_83060657-aff5-45cd-ba2e-65ed239b0629.jpg?v=1777982165&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Aura / Squadron Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 8,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_1c625fd9-faf0-4a5a-a415-dc78912b1ad4.jpg?v=1777897495&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Magniful Grey / Dark Olivine</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_3de03d0c-1354-4da8-bab4-2033801ac331.jpg?v=1777897439&width=533" class="card-img-top" alt="New Balance 9060">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">New Balance</p>
+            <p class="card-name">9060</p>
+            <p class="card-color">Neptune Grey / Shadow Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" class="card-img-top" alt="Air Jordan 1 Low Black Tornado">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Black Tornado</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 3 — PRODUCT CARDS ══════════════ -->
+  <div class="container mt-4 mb-5">
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_c99e2fd0-e16a-4e83-8340-daa93c7daf14.jpg?v=1777283864&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Aura / Squadron Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 8,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/4_c5433f5f-6fea-4fe7-ba8e-1f5b0925b3ee.jpg?v=1776861162&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Magniful Grey / Dark Olivine</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/21a.jpg?v=1776775866&width=533" class="card-img-top" alt="New Balance 9060">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">New Balance</p>
+            <p class="card-name">9060</p>
+            <p class="card-color">Neptune Grey / Shadow Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->                
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_db58c8da-b716-4d65-b7cb-cee60f65e1e4.jpg?v=1776848533&width=533" class="card-img-top" alt="Air Jordan 1 Low Black Tornado">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Black Tornado</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 4 — PRODUCT CARDS ══════════════ -->
+  <div class="container mt-4 mb-5">
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_a6293ee3-35ab-4819-967a-f8bf12db3b61.jpg?v=1776688650&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Aura / Squadron Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 8,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_931185f5-7688-44ba-ba89-0e2bce2ad422.jpg?v=1776689107&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Magniful Grey / Dark Olivine</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_769f3d2c-e87c-4c8c-ba47-a8e355b7e687.jpg?v=1776688531&width=533" class="card-img-top" alt="New Balance 9060">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">New Balance</p>
+            <p class="card-name">9060</p>
+            <p class="card-color">Neptune Grey / Shadow Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_4ec85371-d718-4e1d-b115-4bc141aff6cb.jpg?v=1776257181&width=533" class="card-img-top" alt="Air Jordan 1 Low Black Tornado">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Black Tornado</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ SECTION 5 — PRODUCT CARDS ══════════════ -->
+  <div class="container mt-4 mb-5">
+    <div class="row g-3">
+
+      <!-- Card 1 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_8b192498-11a0-4a7c-ac99-99bd6ce76e64.png?v=1776155776&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Aura / Squadron Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 8,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 2 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/3_09144cd5-460a-4ea4-85b0-da7c4790e872.png?v=1776153915&width=533" class="card-img-top" alt="Air Jordan 1 Low">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Magniful Grey / Dark Olivine</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,995</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_3c448f4b-184c-4c11-9af7-3d62a8b5b9d4.png?v=1776153751&width=533" class="card-img-top" alt="New Balance 9060">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">New Balance</p>
+            <p class="card-name">9060</p>
+            <p class="card-color">Neptune Grey / Shadow Blue</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 4 -->
+      <div class="col-6 col-md-3">
+        <div class="card h-100">
+          <a href="">
+            <img src="https://www.superkicks.in/cdn/shop/files/2_1fbb54fa-caad-44a2-915b-d0f89ac392de.png?v=1776154664&width=533" class="card-img-top" alt="Air Jordan 1 Low Black Tornado">
+          </a>
+          <div class="card-body">
+            <button class="card-cart-btn" title="Add to Cart" data-product-id="p4" data-name="Air Jordan 1 Low" data-brand="Jordan" data-color="Black Tornado" data-price="17999" data-img="https://www.superkicks.in/cdn/shop/files/2_8f420f2d-a578-4480-9d19-cafedcfda3e5.png?v=1773392942&width=533" onclick="handleAddToCartClick(event, this)"><i class="fa-solid fa-cart-arrow-down"></i></button> 
+            <p class="card-brand">Jordan</p>
+            <p class="card-name">Air Jordan 1 Low</p>
+            <p class="card-color">Black Tornado</p>
+            <p class="card-price"><i class="fa-solid fa-indian-rupee-sign"></i> 17,999</p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- ══════════════ FOOTER ══════════════ -->
+  <!-- FIX: removed .f class, footer itself carries full black bg with no-gutters row -->
+  <footer class="footer">
+    <div class="container-fluid px-4 px-md-5">
+      <div class="row g-4">
+        <div class="col-12 col-sm-6 col-md-4">
+          <h5 class="footer-title">Information</h5>
+          <a href="#">About Us</a>
+          <a href="#">Contact Us</a>
+          <a href="#">Releases</a>
+          <a href="#">Store Locator</a>
+          <a href="#">Brands</a>
+          <a href="#">Blogs</a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <h5 class="footer-title">Important Links</h5>
+          <a href="#">Help Center</a>
+          <a href="#">FAQ</a>
+          <a href="#">Privacy Policy</a>
+          <a href="#">Collaborate With Us</a>
+          <a href="#">Return &amp; Exchange</a>
+          <a href="#">Terms &amp; Conditions</a>
+          <a href="#">Order &amp; Shipping</a>
+          <a href="#">Gift Card</a>
+          <a href="#">Bulk / Corporate Buying</a>
+        </div>
+        <div class="col-12 col-sm-6 col-md-4">
+          <h5 class="footer-title">Newsletter</h5>
+          <p>Get to know more<br>about trends &amp; style</p>
+          <div class="float-label-wrap">
+            <input type="email" placeholder=" " class="email-box">
+            <label class="float-label">Email</label>
+          </div>
+          <br>
+          <button class="subscribe-btn">Subscribe</button>
+          <h5 class="footer-title mt-4">Social Media</h5>
+          <div class="social">
+            <a href="https://www.instagram.com/?hl=en"><i class="fa-brands fa-square-instagram"></i></a>
+            <a href="https://www.facebook.com/"><i class="fa-brands fa-square-facebook"></i></a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ====================================================================================== -->
+
+  <div class="modal fade" id="authModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:0; border:none;">
+        <div class="modal-header" style="border-bottom:2px solid #e0e0e0;">
+          <h5 class="modal-title" style="font-weight:900; letter-spacing:2px; font-size:1rem;">My Account</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <div class="auth-tabs">
+            <button class="auth-tab active" id="loginTabBtn" onclick="switchAuthTab('login')">Login</button>
+            <button class="auth-tab" id="registerTabBtn" onclick="switchAuthTab('register')">Register</button>
+          </div>
+
+          <div class="auth-error-banner" id="authErrorBanner"></div>
+
+          <!-- LOGIN PANEL -->
+          <div class="auth-panel active" id="loginPanel">
+            <form onsubmit="return handleLoginSubmit(event)" novalidate>
+              <div class="shop-form-group" id="loginEmailGroup">
+                <label>Email</label>
+                <input type="email" id="loginEmail" autocomplete="email">
+                <div class="shop-form-error">Enter a valid email address.</div>
+              </div>
+              <div class="shop-form-group" id="loginPasswordGroup">
+                <label>Password</label>
+                <input type="password" id="loginPassword" autocomplete="current-password">
+                <div class="shop-form-error">Password is required.</div>
+              </div>
+              <button type="submit" class="btn-shop-primary btn-block-shop">Login</button>
+              <p class="auth-switch-note">New here? <a onclick="switchAuthTab('register')">Create an account</a></p>
+            </form>
+          </div>
+
+          <!-- REGISTER PANEL -->
+          <div class="auth-panel" id="registerPanel">
+            <form onsubmit="return handleRegisterSubmit(event)" novalidate>
+              <div class="shop-form-group" id="regNameGroup">
+                <label>Full Name</label>
+                <input type="text" id="regName" autocomplete="name">
+                <div class="shop-form-error">Please enter your name.</div>
+              </div>
+              <div class="shop-form-group" id="regEmailGroup">
+                <label>Email</label>
+                <input type="email" id="regEmail" autocomplete="email">
+                <div class="shop-form-error">Enter a valid email address.</div>
+              </div>
+              <div class="shop-form-group" id="regPhoneGroup">
+                <label>Phone Number</label>
+                <input type="tel" id="regPhone" autocomplete="tel">
+                <div class="shop-form-error">Enter a valid 10-digit phone number.</div>
+              </div>
+              <div class="shop-form-group" id="regPasswordGroup">
+                <label>Password</label>
+                <input type="password" id="regPassword" autocomplete="new-password">
+                <div class="shop-form-error">Password must be at least 6 characters.</div>
+              </div>
+              <button type="submit" class="btn-shop-primary btn-block-shop">Create Account</button>
+              <p class="auth-switch-note">Already have an account? <a onclick="switchAuthTab('login')">Login</a></p>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CART OVERLAY ══════════════ -->
+  <div class="shop-overlay" id="cartOverlay">
+    <div class="shop-topbar">
+      <button class="shop-back-btn" onclick="closeOverlay('cartOverlay')"><i class="fa-solid fa-arrow-left"></i></button>
+      <h2>Your Cart</h2>
+    </div>
+    <div class="shop-body">
+      <div id="cartContent"></div>
+    </div>
+  </div>
+
+  <!-- ══════════════ CHECKOUT OVERLAY ══════════════ -->
+  <div class="shop-overlay" id="checkoutOverlay">
+    <div class="shop-topbar">
+      <button class="shop-back-btn" onclick="closeOverlay('checkoutOverlay')"><i class="fa-solid fa-arrow-left"></i></button>
+      <h2>Checkout</h2>
+    </div>
+    <div class="shop-body">
+      <div class="row g-4">
+        <div class="col-12 col-lg-7">
+          <form id="checkoutForm" onsubmit="return handleCheckoutSubmit(event)" novalidate>
+            <p style="font-weight:900; letter-spacing:1.5px; font-size:0.85rem; margin-bottom:16px;">Contact Details</p>
+            <div class="shop-form-group" id="coNameGroup">
+              <label>Full Name</label>
+              <input type="text" id="coName">
+              <div class="shop-form-error">Please enter your name.</div>
+            </div>
+            <div class="shop-form-group" id="coEmailGroup">
+              <label>Email</label>
+              <input type="email" id="coEmail">
+              <div class="shop-form-error">Enter a valid email address.</div>
+            </div>
+            <div class="shop-form-group" id="coPhoneGroup">
+              <label>Phone Number</label>
+              <input type="tel" id="coPhone">
+              <div class="shop-form-error">Enter a valid 10-digit phone number.</div>
+            </div>
+            <p style="font-weight:900; letter-spacing:1.5px; font-size:0.85rem; margin:26px 0 16px;">Shipping Address</p>
+            <div class="shop-form-group" id="coAddressGroup">
+              <label>Address</label>
+              <textarea id="coAddress" rows="2"></textarea>
+              <div class="shop-form-error">Please enter your shipping address.</div>
+            </div>
+            <div class="row">
+              <div class="col-6">
+                <div class="shop-form-group" id="coCityGroup">
+                  <label>City</label>
+                  <input type="text" id="coCity">
+                  <div class="shop-form-error">Required.</div>
+                </div>
+              </div>
+              <div class="col-6">
+                <div class="shop-form-group" id="coPinGroup">
+                  <label>Pincode</label>
+                  <input type="text" id="coPin">
+                  <div class="shop-form-error">Enter a valid 6-digit pincode.</div>
+                </div>
+              </div>
+            </div>
+            <p style="font-weight:900; letter-spacing:1.5px; font-size:0.85rem; margin:26px 0 16px;">Discount / Coupon</p>
+            <div class="d-flex gap-2 mb-4">
+              <input type="text" id="couponInput" placeholder="Enter coupon code" style="text-transform:none; flex:1; border:1px solid #ccc; padding:11px 12px; font-size:0.85rem; outline:none;">
+              <button type="button" class="btn-shop-outline" onclick="applyCoupon()">Apply</button>
+            </div>
+            <div id="couponMsg" style="font-size:0.7rem; letter-spacing:0.5px; margin-top:-12px; margin-bottom:20px; text-transform:none;"></div>
+            <button type="submit" class="btn-shop-primary btn-block-shop">Continue to Payment</button>
+          </form>
+        </div>
+        <div class="col-12 col-lg-5">
+          <div class="cart-summary-box">
+            <p style="font-weight:900; letter-spacing:1.5px; font-size:0.85rem; margin-bottom:16px;">Order Summary</p>
+            <div id="checkoutSummaryItems"></div>
+            <div class="cart-summary-row"><span>Subtotal</span><span id="coSubtotal">₹0</span></div>
+            <div class="cart-summary-row"><span>Shipping</span><span id="coShipping">₹0</span></div>
+            <div class="cart-summary-row" id="coDiscountRow" style="display:none;"><span>Discount</span><span id="coDiscount">-₹0</span></div>
+            <div class="cart-summary-row cart-summary-total"><span>Total</span><span id="coTotal">₹0</span></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ PAYMENT OVERLAY ══════════════ -->
+  <div class="shop-overlay" id="paymentOverlay">
+    <div class="shop-topbar">
+      <button class="shop-back-btn" onclick="backToCheckout()"><i class="fa-solid fa-arrow-left"></i></button>
+      <h2>Payment</h2>
+    </div>
+    <div class="shop-body" style="max-width:600px;">
+      <p style="font-weight:900; letter-spacing:1.5px; font-size:0.85rem; margin-bottom:18px;">Select Payment Method</p>
+      <div id="paymentMethods">
+        <label class="pay-method" data-method="upi">
+          <i class="fa-solid fa-mobile-screen-button"></i><span>UPI</span>
+          <input type="radio" name="payMethod" value="upi">
+        </label>
+        <label class="pay-method" data-method="card">
+          <i class="fa-solid fa-credit-card"></i><span>Credit / Debit Card</span>
+          <input type="radio" name="payMethod" value="card">
+        </label>
+        <label class="pay-method" data-method="netbanking">
+          <i class="fa-solid fa-building-columns"></i><span>Net Banking</span>
+          <input type="radio" name="payMethod" value="netbanking">
+        </label>
+        <label class="pay-method" data-method="wallet">
+          <i class="fa-solid fa-wallet"></i><span>Wallets</span>
+          <input type="radio" name="payMethod" value="wallet">
+        </label>
+        <label class="pay-method" data-method="cod">
+          <i class="fa-solid fa-money-bill-wave"></i><span>Cash on Delivery</span>
+          <input type="radio" name="payMethod" value="cod">
+        </label>
+      </div>
+      <div id="paymentMethodError" style="display:none; color:#e00; font-size:0.72rem; letter-spacing:0.5px; margin-bottom:14px; text-transform:none;">Please select a payment method.</div>
+
+      <!-- Extra field areas shown per method (no real gateway wired up — see notes below) -->
+      <div id="cardFieldsWrap" style="display:none; margin-top:8px;">
+        <div class="shop-form-group">
+          <label>Card Number</label>
+          <input type="text" id="cardNumber" maxlength="19" placeholder="•••• •••• •••• ••••">
+        </div>
+        <div class="row">
+          <div class="col-6">
+            <div class="shop-form-group"><label>Expiry</label><input type="text" id="cardExpiry" placeholder="MM/YY"></div>
+          </div>
+          <div class="col-6">
+            <div class="shop-form-group"><label>CVV</label><input type="password" id="cardCvv" maxlength="4" placeholder="•••"></div>
+          </div>
+        </div>
+      </div>
+      <div id="upiFieldsWrap" style="display:none; margin-top:8px;">
+        <div class="shop-form-group"><label>UPI ID</label><input type="text" id="upiId" placeholder="name@bank"></div>
+      </div>
+
+      <div class="cart-summary-box mt-4 mb-4">
+        <div class="cart-summary-row cart-summary-total"><span>Amount Payable</span><span id="payTotal">₹0</span></div>
+      </div>
+      <button type="button" class="btn-shop-primary btn-block-shop" onclick="handlePaySubmit()" id="payNowBtn">Pay Now</button>
+      <p style="font-size:0.65rem; color:#999; text-align:center; margin-top:14px; letter-spacing:0.5px; text-transform:none;">
+        This is a demo payment UI. No real transaction is processed until a payment gateway is connected on the backend.
+      </p>
+    </div>
+  </div>
+
+  <!-- ══════════════ ORDER CONFIRMATION OVERLAY ══════════════ -->
+  <div class="shop-overlay" id="confirmOverlay">
+    <div class="shop-topbar">
+      <h2>Order Confirmation</h2>
+    </div>
+    <div class="shop-body" style="max-width:600px; text-align:center;">
+      <div class="order-confirm-icon"><i class="fa-solid fa-check"></i></div>
+      <h1 class="section-title" style="font-size:1.4rem;">Order Placed!</h1>
+      <p style="font-size:0.8rem; color:#666; letter-spacing:0.5px; margin-bottom:6px; text-transform:none;">Order ID</p>
+      <p style="font-weight:900; font-size:1.1rem; margin-bottom:16px;" id="confirmOrderId">—</p>
+      <div class="order-status-badge" id="confirmStatus">PAID</div>
+      <div class="text-start mt-4" id="confirmItems"></div>
+      <div class="cart-summary-box text-start mt-3 mb-4">
+        <div class="cart-summary-row cart-summary-total"><span>Total Paid</span><span id="confirmTotal">₹0</span></div>
+      </div>
+      <div class="d-flex gap-3 justify-content-center flex-wrap">
+        <button class="btn-shop-outline" onclick="viewAccountFromConfirm()">View Order</button>
+        <button class="btn-shop-primary" onclick="continueShoppingFromConfirm()">Continue Shopping</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ACCOUNT OVERLAY ══════════════ -->
+  <div class="shop-overlay" id="accountOverlay">
+    <div class="shop-topbar">
+      <button class="shop-back-btn" onclick="closeOverlay('accountOverlay')"><i class="fa-solid fa-arrow-left"></i></button>
+      <h2>My Account</h2>
+    </div>
+    <div class="shop-body">
+      <div class="account-tabs">
+        <button class="account-tab active" onclick="switchAccountTab('profile')">Profile</button>
+        <button class="account-tab" onclick="switchAccountTab('orders')">Orders</button>
+      </div>
+      <div class="account-panel active" id="profilePanel">
+        <div class="shop-form-group"><label>Name</label><div id="profName" style="font-weight:700; font-size:0.9rem; text-transform:none;"></div></div>
+        <div class="shop-form-group"><label>Email</label><div id="profEmail" style="font-weight:700; font-size:0.9rem; text-transform:none;"></div></div>
+        <div class="shop-form-group"><label>Phone</label><div id="profPhone" style="font-weight:700; font-size:0.9rem; text-transform:none;"></div></div>
+        <button class="btn-shop-outline mt-3" onclick="handleLogout()">Logout</button>
+      </div>
+      <div class="account-panel" id="ordersPanel">
+        <div id="ordersList"></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ══════════════ ORDER DETAIL MODAL ══════════════ -->
+  <div class="modal fade" id="orderDetailModal" tabindex="-1" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content" style="border-radius:0; border:none;">
+        <div class="modal-header" style="border-bottom:2px solid #e0e0e0;">
+          <h5 class="modal-title" style="font-weight:900; letter-spacing:2px; font-size:1rem;">Order Details</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4" id="orderDetailBody"></div>
+      </div>
+    </div>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script>
+  <script>
+    // Brand Carousel Logic
+    const track = document.getElementById('brandTrack');
+    const dots  = document.querySelectorAll('.brand-dot');
+    const total = 4;
+    let current = 0;
+
+    function visible() {
+      return window.innerWidth <= 540 ? 1 : window.innerWidth <= 900 ? 2 : 4;
+    }
+
+    function maxIdx() { return Math.max(0, total - visible()); }
+
+    function goTo(idx) {
+      current = Math.max(0, Math.min(idx, maxIdx()));
+      const pct = (current / visible()) * 100;
+      track.style.transform = `translateX(-${pct}%)`;
+      dots.forEach((d, i) => d.classList.toggle('active', i === current));
+    }
+
+    document.getElementById('brandPrev').addEventListener('click', () => goTo(current - 1));
+    document.getElementById('brandNext').addEventListener('click', () => goTo(current + 1));
+    dots.forEach(d => d.addEventListener('click', () => goTo(+d.dataset.index)));
+    window.addEventListener('resize', () => goTo(current));
+
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend', e => {
+      const diff = startX - e.changedTouches[0].clientX;
+      if (Math.abs(diff) > 40) goTo(diff > 0 ? current + 1 : current - 1);
+    });
+  </script>
+
+  <!-- ══════════════ E-COMMERCE SHOPPING FLOW ══════════════ -->
+  <script>
+    /*
+      DEMO DATA LAYER
+      ----------------
+      No backend/payment gateway is wired into this project, so all state
+      (users, cart, orders) lives in memory for this browser session and is
+      reset on page reload. Every function below is written so a real
+      backend can be dropped in later:
+        - swap `users` / `orders` arrays for API calls (fetch to your auth
+          and orders endpoints)
+        - swap `simulatePaymentGateway()` for a real gateway SDK/redirect
+        - keep validating prices/totals on the server once one exists —
+          this frontend never trusts its own totals for a real charge
+    */
+    const shop = {
+      users: [],
+      currentUser: null,
+      cart: [],
+      orders: [],
+      pendingAction: null,
+      coupon: null,
+      checkoutDetails: null,
+      selectedPayMethod: null,
+      orderCounter: 1000
+    };
+
+    const authModalEl = document.getElementById('authModal');
+    const authModal = new bootstrap.Modal(authModalEl);
+    const orderDetailModalEl = document.getElementById('orderDetailModal');
+    const orderDetailModal = new bootstrap.Modal(orderDetailModalEl);
+
+    function money(n) {
+      return '₹' + Number(n).toLocaleString('en-IN');
+    }
+
+    /* ── Toast ── */
+    let toastTimer;
+    function showToast(msg) {
+      const toast = document.getElementById('cartToast');
+      toast.textContent = msg;
+      toast.classList.add('show');
+      clearTimeout(toastTimer);
+      toastTimer = setTimeout(() => toast.classList.remove('show'), 1800);
+    }
+
+    /* ── Overlay helpers ── */
+    function openOverlay(id) {
+      const el = document.getElementById(id);
+      el.classList.add('active');
+      requestAnimationFrame(() => el.classList.add('show'));
+      document.body.style.overflow = 'hidden';
+    }
+    function closeOverlay(id) {
+      const el = document.getElementById(id);
+      el.classList.remove('show');
+      document.body.style.overflow = '';
+      setTimeout(() => el.classList.remove('active'), 250);
+    }
+    function closeAllOverlays() {
+      document.querySelectorAll('.shop-overlay.active').forEach(el => closeOverlay(el.id));
+    }
+
+    /* ══════════════ AUTH ══════════════ */
+    function switchAuthTab(tab) {
+      document.getElementById('loginTabBtn').classList.toggle('active', tab === 'login');
+      document.getElementById('registerTabBtn').classList.toggle('active', tab === 'register');
+      document.getElementById('loginPanel').classList.toggle('active', tab === 'login');
+      document.getElementById('registerPanel').classList.toggle('active', tab === 'register');
+      document.getElementById('authErrorBanner').style.display = 'none';
+    }
+
+    function showAuthError(msg) {
+      const banner = document.getElementById('authErrorBanner');
+      banner.textContent = msg;
+      banner.style.display = 'block';
+    }
+
+    function setFieldError(groupId, hasError) {
+      document.getElementById(groupId).classList.toggle('has-error', hasError);
+    }
+
+    function isValidEmail(v) { return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(v); }
+    function isValidPhone(v) { return /^\d{10}$/.test(v); }
+    function isValidPin(v) { return /^\d{6}$/.test(v); }
+
+    function requireLogin(pendingAction) {
+      shop.pendingAction = pendingAction || null;
+      document.getElementById('authErrorBanner').style.display = 'none';
+      switchAuthTab('login');
+      authModal.show();
+    }
+
+    function handleLoginSubmit(e) {
+      e.preventDefault();
+      const email = document.getElementById('loginEmail').value.trim();
+      const password = document.getElementById('loginPassword').value;
+      let ok = true;
+      setFieldError('loginEmailGroup', !isValidEmail(email));
+      if (!isValidEmail(email)) ok = false;
+      setFieldError('loginPasswordGroup', password.length === 0);
+      if (password.length === 0) ok = false;
+      if (!ok) return false;
+
+      const user = shop.users.find(u => u.email === email);
+      if (!user || user.password !== password) {
+        showAuthError('Incorrect email or password. Please try again.');
+        return false;
+      }
+      shop.currentUser = user;
+      authModal.hide();
+      document.getElementById('loginEmail').value = '';
+      document.getElementById('loginPassword').value = '';
+      showToast('Welcome back, ' + user.name.split(' ')[0] + '!');
+      resumePendingAction();
+      return false;
+    }
+
+    function handleRegisterSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('regName').value.trim();
+      const email = document.getElementById('regEmail').value.trim();
+      const phone = document.getElementById('regPhone').value.trim();
+      const password = document.getElementById('regPassword').value;
+      let ok = true;
+
+      setFieldError('regNameGroup', name.length === 0);
+      if (name.length === 0) ok = false;
+      setFieldError('regEmailGroup', !isValidEmail(email));
+      if (!isValidEmail(email)) ok = false;
+      setFieldError('regPhoneGroup', !isValidPhone(phone));
+      if (!isValidPhone(phone)) ok = false;
+      setFieldError('regPasswordGroup', password.length < 6);
+      if (password.length < 6) ok = false;
+      if (!ok) return false;
+
+      if (shop.users.find(u => u.email === email)) {
+        showAuthError('An account with this email already exists. Try logging in instead.');
+        return false;
+      }
+
+      // NOTE: password is kept only in this in-memory session object for the
+      // demo. A real backend must hash and store credentials server-side —
+      // never persist raw passwords client-side.
+      const user = { name, email, phone, password };
+      shop.users.push(user);
+      shop.currentUser = user;
+      authModal.hide();
+      document.getElementById('regName').value = '';
+      document.getElementById('regEmail').value = '';
+      document.getElementById('regPhone').value = '';
+      document.getElementById('regPassword').value = '';
+      showToast('Account created — welcome, ' + name.split(' ')[0] + '!');
+      resumePendingAction();
+      return false;
+    }
+
+    function handleLogout() {
+      shop.currentUser = null;
+      closeAllOverlays();
+      showToast('Logged out');
+    }
+
+    function resumePendingAction() {
+      const action = shop.pendingAction;
+      shop.pendingAction = null;
+      if (!action) return;
+      if (action.type === 'addToCart') {
+        addToCart(action.product);
+      } else if (action.type === 'checkout') {
+        proceedToCheckout();
+      } else if (action.type === 'account') {
+        openAccount();
+      }
+    }
+
+    function handleAccountIconClick() {
+      if (!shop.currentUser) {
+        requireLogin({ type: 'account' });
+        return;
+      }
+      openAccount();
+    }
+
+    /* ══════════════ CART ══════════════ */
+    function handleAddToCartClick(event, btn) {
+      event.preventDefault();
+      event.stopPropagation();
+      const product = {
+        id: btn.dataset.productId,
+        name: btn.dataset.name,
+        brand: btn.dataset.brand,
+        color: btn.dataset.color,
+        price: Number(btn.dataset.price),
+        img: btn.dataset.img
+      };
+      if (!shop.currentUser) {
+        requireLogin({ type: 'addToCart', product });
+        return;
+      }
+      addToCart(product);
+    }
+
+    function addToCart(product) {
+      const existing = shop.cart.find(item => item.id === product.id);
+      if (existing) {
+        existing.qty += 1;
+      } else {
+        shop.cart.push({ ...product, qty: 1 });
+      }
+      updateCartBadge();
+      showToast('Added to cart');
+      if (document.getElementById('cartOverlay').classList.contains('active')) renderCart();
+    }
+
+    function updateCartBadge() {
+      const badge = document.getElementById('cartBadge');
+      const count = shop.cart.reduce((sum, i) => sum + i.qty, 0);
+      badge.textContent = count;
+      badge.style.display = count > 0 ? 'flex' : 'none';
+    }
+
+    function cartSubtotal() {
+      return shop.cart.reduce((sum, i) => sum + i.price * i.qty, 0);
+    }
+
+    function openCart() {
+      renderCart();
+      openOverlay('cartOverlay');
+    }
+
+    function renderCart() {
+      const wrap = document.getElementById('cartContent');
+      if (shop.cart.length === 0) {
+        wrap.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-cart-shopping"></i>
+            <p>Your cart is empty</p>
+            <button class="btn-shop-primary mt-2" onclick="closeOverlay('cartOverlay')">Continue Shopping</button>
+          </div>`;
+        return;
+      }
+      const rows = shop.cart.map(item => `
+        <div class="cart-row">
+          <img src="${item.img}" alt="${item.name}">
+          <div class="cart-row-info">
+            <p class="cart-row-brand">${item.brand}</p>
+            <p class="cart-row-name">${item.name}</p>
+            <p class="cart-row-price">${money(item.price)}</p>
+          </div>
+          <div class="qty-control">
+            <button onclick="changeQty('${item.id}', -1)">−</button>
+            <span>${item.qty}</span>
+            <button onclick="changeQty('${item.id}', 1)">+</button>
+          </div>
+          <div class="cart-row-subtotal">${money(item.price * item.qty)}</div>
+          <button class="cart-remove-btn" title="Remove" onclick="removeFromCart('${item.id}')"><i class="fa-solid fa-trash"></i></button>
+        </div>`).join('');
+
+      const subtotal = cartSubtotal();
+      wrap.innerHTML = `
+        <div class="row g-4">
+          <div class="col-12 col-lg-8">${rows}</div>
+          <div class="col-12 col-lg-4">
+            <div class="cart-summary-box">
+              <div class="cart-summary-row"><span>Subtotal</span><span>${money(subtotal)}</span></div>
+              <div class="cart-summary-row cart-summary-total"><span>Total</span><span>${money(subtotal)}</span></div>
+              <button class="btn-shop-outline btn-block-shop mt-3 mb-2" onclick="closeOverlay('cartOverlay')">Continue Shopping</button>
+              <button class="btn-shop-primary btn-block-shop" onclick="proceedToCheckout()">Proceed to Checkout</button>
+            </div>
+          </div>
+        </div>`;
+    }
+
+    function changeQty(id, delta) {
+      const item = shop.cart.find(i => i.id === id);
+      if (!item) return;
+      item.qty += delta;
+      if (item.qty <= 0) shop.cart = shop.cart.filter(i => i.id !== id);
+      updateCartBadge();
+      renderCart();
+    }
+
+    function removeFromCart(id) {
+      shop.cart = shop.cart.filter(i => i.id !== id);
+      updateCartBadge();
+      renderCart();
+    }
+
+    /* ══════════════ CHECKOUT ══════════════ */
+    function proceedToCheckout() {
+      if (shop.cart.length === 0) return;
+      if (!shop.currentUser) {
+        requireLogin({ type: 'checkout' });
+        return;
+      }
+      closeOverlay('cartOverlay');
+      setTimeout(() => {
+        prefillCheckout();
+        renderCheckoutSummary();
+        openOverlay('checkoutOverlay');
+      }, 200);
+    }
+
+    function prefillCheckout() {
+      document.getElementById('coName').value = shop.currentUser.name;
+      document.getElementById('coEmail').value = shop.currentUser.email;
+      document.getElementById('coPhone').value = shop.currentUser.phone;
+    }
+
+    function renderCheckoutSummary() {
+      const items = document.getElementById('checkoutSummaryItems');
+      items.innerHTML = shop.cart.map(i => `
+        <div class="cart-summary-row"><span>${i.name} × ${i.qty}</span><span>${money(i.price * i.qty)}</span></div>
+      `).join('');
+
+      const subtotal = cartSubtotal();
+      const shipping = subtotal > 5000 ? 0 : (shop.cart.length ? 199 : 0);
+      const discount = shop.coupon ? Math.round(subtotal * shop.coupon.percent / 100) : 0;
+      const total = subtotal + shipping - discount;
+
+      document.getElementById('coSubtotal').textContent = money(subtotal);
+      document.getElementById('coShipping').textContent = shipping === 0 ? 'FREE' : money(shipping);
+      document.getElementById('coDiscountRow').style.display = discount > 0 ? 'flex' : 'none';
+      document.getElementById('coDiscount').textContent = '-' + money(discount);
+      document.getElementById('coTotal').textContent = money(total);
+
+      return { subtotal, shipping, discount, total };
+    }
+
+    function applyCoupon() {
+      const code = document.getElementById('couponInput').value.trim().toUpperCase();
+      const msg = document.getElementById('couponMsg');
+      const validCoupons = { WELCOME10: 10, KICKS15: 15 };
+      if (validCoupons[code]) {
+        shop.coupon = { code, percent: validCoupons[code] };
+        msg.style.color = '#2a8a3e';
+        msg.textContent = `Coupon "${code}" applied — ${validCoupons[code]}% off`;
+      } else {
+        shop.coupon = null;
+        msg.style.color = '#e00';
+        msg.textContent = code ? 'Invalid coupon code' : '';
+      }
+      renderCheckoutSummary();
+    }
+
+    function handleCheckoutSubmit(e) {
+      e.preventDefault();
+      const name = document.getElementById('coName').value.trim();
+      const email = document.getElementById('coEmail').value.trim();
+      const phone = document.getElementById('coPhone').value.trim();
+      const address = document.getElementById('coAddress').value.trim();
+      const city = document.getElementById('coCity').value.trim();
+      const pin = document.getElementById('coPin').value.trim();
+      let ok = true;
+
+      setFieldError('coNameGroup', name.length === 0); if (!name) ok = false;
+      setFieldError('coEmailGroup', !isValidEmail(email)); if (!isValidEmail(email)) ok = false;
+      setFieldError('coPhoneGroup', !isValidPhone(phone)); if (!isValidPhone(phone)) ok = false;
+      setFieldError('coAddressGroup', address.length === 0); if (!address) ok = false;
+      setFieldError('coCityGroup', city.length === 0); if (!city) ok = false;
+      setFieldError('coPinGroup', !isValidPin(pin)); if (!isValidPin(pin)) ok = false;
+
+      if (!ok) return false;
+
+      shop.checkoutDetails = { name, email, phone, address, city, pin };
+      closeOverlay('checkoutOverlay');
+      setTimeout(() => {
+        shop.selectedPayMethod = null;
+        document.querySelectorAll('.pay-method').forEach(el => el.classList.remove('selected'));
+        document.querySelectorAll('.pay-method input').forEach(el => el.checked = false);
+        document.getElementById('cardFieldsWrap').style.display = 'none';
+        document.getElementById('upiFieldsWrap').style.display = 'none';
+        document.getElementById('paymentMethodError').style.display = 'none';
+        const totals = renderCheckoutSummary();
+        document.getElementById('payTotal').textContent = money(totals.total);
+        openOverlay('paymentOverlay');
+      }, 200);
+      return false;
+    }
+
+    function backToCheckout() {
+      closeOverlay('paymentOverlay');
+      setTimeout(() => openOverlay('checkoutOverlay'), 200);
+    }
+
+    /* ══════════════ PAYMENT ══════════════ */
+    document.querySelectorAll('.pay-method').forEach(el => {
+      el.addEventListener('click', () => {
+        document.querySelectorAll('.pay-method').forEach(m => m.classList.remove('selected'));
+        el.classList.add('selected');
+        el.querySelector('input').checked = true;
+        shop.selectedPayMethod = el.dataset.method;
+        document.getElementById('paymentMethodError').style.display = 'none';
+        document.getElementById('cardFieldsWrap').style.display = shop.selectedPayMethod === 'card' ? 'block' : 'none';
+        document.getElementById('upiFieldsWrap').style.display = shop.selectedPayMethod === 'upi' ? 'block' : 'none';
+      });
+    });
+
+    function simulatePaymentGateway(method, amount) {
+      // Placeholder for a real payment gateway integration (Razorpay/Stripe/
+      // UPI intent/etc). Swap this resolved Promise for the gateway's SDK
+      // call once a backend + gateway credentials exist. Server must verify
+      // the amount independently — never trust the frontend total.
+      return new Promise(resolve => setTimeout(() => resolve({ success: true }), 900));
+    }
+
+    async function handlePaySubmit() {
+      if (!shop.selectedPayMethod) {
+        document.getElementById('paymentMethodError').style.display = 'block';
+        return;
+      }
+      const btn = document.getElementById('payNowBtn');
+      btn.disabled = true;
+      btn.textContent = 'Processing...';
+
+      const totals = renderCheckoutSummary();
+      const result = await simulatePaymentGateway(shop.selectedPayMethod, totals.total);
+
+      btn.disabled = false;
+      btn.textContent = 'Pay Now';
+
+      if (!result.success) {
+        showToast('Payment failed — please try again');
+        return;
+      }
+
+      const order = {
+        id: 'ORD' + (shop.orderCounter++),
+        date: new Date(),
+        items: shop.cart.map(i => ({ ...i })),
+        subtotal: totals.subtotal,
+        shipping: totals.shipping,
+        discount: totals.discount,
+        total: totals.total,
+        paymentMethod: shop.selectedPayMethod,
+        status: shop.selectedPayMethod === 'cod' ? 'Order Placed' : 'Paid',
+        customer: { ...shop.checkoutDetails }
+      };
+      shop.orders.unshift(order);
+      shop.cart = [];
+      shop.coupon = null;
+      updateCartBadge();
+
+      closeOverlay('paymentOverlay');
+      setTimeout(() => {
+        renderConfirmation(order);
+        openOverlay('confirmOverlay');
+      }, 200);
+    }
+
+    function renderConfirmation(order) {
+      document.getElementById('confirmOrderId').textContent = order.id;
+      document.getElementById('confirmStatus').textContent = order.status.toUpperCase();
+      document.getElementById('confirmTotal').textContent = money(order.total);
+      document.getElementById('confirmItems').innerHTML = order.items.map(i => `
+        <div class="cart-summary-row"><span>${i.name} × ${i.qty}</span><span>${money(i.price * i.qty)}</span></div>
+      `).join('');
+    }
+
+    function continueShoppingFromConfirm() {
+      closeOverlay('confirmOverlay');
+    }
+
+    function viewAccountFromConfirm() {
+      closeOverlay('confirmOverlay');
+      setTimeout(() => {
+        openAccount();
+        switchAccountTab('orders');
+      }, 200);
+    }
+
+    /* ══════════════ ACCOUNT ══════════════ */
+    function openAccount() {
+      if (!shop.currentUser) {
+        requireLogin({ type: 'account' });
+        return;
+      }
+      document.getElementById('profName').textContent = shop.currentUser.name;
+      document.getElementById('profEmail').textContent = shop.currentUser.email;
+      document.getElementById('profPhone').textContent = shop.currentUser.phone;
+      renderOrdersList();
+      openOverlay('accountOverlay');
+    }
+
+    function switchAccountTab(tab) {
+      document.querySelectorAll('.account-tab').forEach((btn, i) => {
+        btn.classList.toggle('active', (tab === 'profile' && i === 0) || (tab === 'orders' && i === 1));
+      });
+      document.getElementById('profilePanel').classList.toggle('active', tab === 'profile');
+      document.getElementById('ordersPanel').classList.toggle('active', tab === 'orders');
+    }
+
+    function renderOrdersList() {
+      const wrap = document.getElementById('ordersList');
+      if (shop.orders.length === 0) {
+        wrap.innerHTML = `
+          <div class="empty-state">
+            <i class="fa-solid fa-box-open"></i>
+            <p>No orders yet</p>
+          </div>`;
+        return;
+      }
+      wrap.innerHTML = shop.orders.map(o => `
+        <div class="order-card" onclick="viewOrderDetail('${o.id}')">
+          <div class="order-card-head">
+            <span class="order-card-id">${o.id}</span>
+            <span class="order-status-badge">${o.status.toUpperCase()}</span>
+          </div>
+          <div class="order-card-meta">${o.date.toDateString()} · ${o.items.reduce((s, i) => s + i.qty, 0)} item(s) · ${money(o.total)}</div>
+        </div>`).join('');
+    }
+
+    function viewOrderDetail(orderId) {
+      const order = shop.orders.find(o => o.id === orderId);
+      if (!order) return;
+      const body = document.getElementById('orderDetailBody');
+      body.innerHTML = `
+        <div class="d-flex justify-content-between align-items-center mb-3">
+          <strong style="letter-spacing:1px;">${order.id}</strong>
+          <span class="order-status-badge">${order.status.toUpperCase()}</span>
+        </div>
+        <p style="font-size:0.7rem; color:#888; text-transform:none; margin-bottom:16px;">${order.date.toDateString()} · Paid via ${order.paymentMethod.toUpperCase()}</p>
+        ${order.items.map(i => `
+          <div class="cart-row" style="padding:12px 0;">
+            <img src="${i.img}" alt="${i.name}">
+            <div class="cart-row-info">
+              <p class="cart-row-brand">${i.brand}</p>
+              <p class="cart-row-name">${i.name}</p>
+              <p class="cart-row-price">Qty ${i.qty}</p>
+            </div>
+            <div class="cart-row-subtotal">${money(i.price * i.qty)}</div>
+          </div>`).join('')}
+        <div class="cart-summary-box mt-3">
+          <div class="cart-summary-row"><span>Subtotal</span><span>${money(order.subtotal)}</span></div>
+          <div class="cart-summary-row"><span>Shipping</span><span>${order.shipping === 0 ? 'FREE' : money(order.shipping)}</span></div>
+          ${order.discount > 0 ? `<div class="cart-summary-row"><span>Discount</span><span>-${money(order.discount)}</span></div>` : ''}
+          <div class="cart-summary-row cart-summary-total"><span>Total</span><span>${money(order.total)}</span></div>
+        </div>
+        <p style="font-size:0.75rem; text-transform:none; margin-top:14px;">
+          <strong>Ship to:</strong> ${order.customer.address}, ${order.customer.city} - ${order.customer.pin}
+        </p>`;
+      orderDetailModal.show();
+    }
+
+    updateCartBadge();
+  </script>
+  
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" integrity="sha384-FKyoEForCGlyvwx9Hj09JcYn3nv7wiPVlz7YYwJrWVcXK/BmnVDxM+D2scQbITxI" crossorigin="anonymous"></script> 
+</body>
+</html>
